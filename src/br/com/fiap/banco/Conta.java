@@ -8,61 +8,80 @@ package br.com.fiap.banco;
         /**
          * Número da conta
          */
-        private int numero;
+        int numero;
 
         /**
          * Número da Agência
          */
-        private int agencia;
+        int agencia;
 
         /**
          * Saldo da Conta
          */
-        private double saldo;
+        double saldo;
 
-        public Conta(){
+        public Conta(int numero) {
 
         }
 
-        public Conta(int numero, int agencia, double saldo){
-            this.setNumero(numero);
-            this.setAgencia(agencia);
+        public Conta(int numero, int agencia, double saldo) {
+            //this.setNumero(numero);
+            //this.setAgencia(agencia);
             //this.setSaldo(saldo);
         }
 
         /**
          * Deposita um valor ao saldo da conta
+         *
          * @param valor Valor a ser depositado
          */
-        public void depositar(double valor){
+        public void depositar(double valor) {
             saldo = saldo + valor;
         }
 
         /**
          * Retira um valor do saldo da conta
+         *
          * @param valor Valor a ser retirado
          */
 
-        public void retirar(double valor){
+        public void retirar(double valor) {
             saldo = saldo - valor;
         }
 
-        public int getNumero() {
-            return numero;
-        }
-        public void setNumero(int numero) {
-            this.numero = numero;
-        }
-        public int getAgencia() {
-            return agencia;
-        }
-        public void setAgencia(int agencia) {
-            this.agencia = agencia;
-        }
-        public double getSaldo() {
-            return saldo;
-        }
-        public void SetSaldo(double saldo) {
-            this.saldo = saldo;
+        public class ContaCorrente extends Conta {
+            public ContaCorrente() {
+                super(numero);
+            }
+
+            @Override
+            public void retirar(double valor) {
+                valor = valor + 10;
+                super.retirar(valor);
+            }
+
+            public int getNumero() {
+                return numero;
+            }
+
+            public void setNumero(int numero) {
+                this.numero = numero;
+            }
+
+            public int getAgencia() {
+                return agencia;
+            }
+
+            public void setAgencia(int agencia) {
+                this.agencia = agencia;
+            }
+
+            public double getSaldo() {
+                return saldo;
+            }
+
+            public void SetSaldo(double saldo) {
+                this.saldo = saldo;
+            }
         }
     }
